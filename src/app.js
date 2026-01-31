@@ -1,5 +1,5 @@
 import express from "express";
-import conectaDataBase from "./config/dbConnect.js";
+import conectaDataBase from "./config/dbconnect.js";
 import livro from "./models/Livro.js";
 
 const conexao = await conectaDataBase();
@@ -18,8 +18,9 @@ app.get("/",(req,res)=>{
     res.status(200).send("Api livraria Node.js");
 })
 
-app.get("/livros",(req,res)=>{
-    res.status(200).json(livros);
+app.get("/livros",async(req,res)=>{
+    const listalivros = await livro.find({});
+    res.status(200).json(listalivros);
 });
 app.post("/livros",(req,res) =>{
     livros.push(req.body);

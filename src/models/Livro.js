@@ -6,7 +6,10 @@ const livroSchema = new mongoose.Schema({
     editora:{type:String,},
     preco:{type: Number},
     paginas:{type: Number}
-},{ versionKey: false});
+},{ versionKey: false,
+    collection: "Livros"
+});
 
-const livro = mongoose.model("livros",livroSchema);
+const livro = mongoose.model("Livros",livroSchema);
+
 export default livro;
