@@ -1,5 +1,7 @@
 import express from "express";
 import conectaDataBase from "./config/dbConnect.js";
+import livro from "./models/Livro.js";
+
 const conexao = await conectaDataBase();
 
 conexao.on("error",(erro)=>{
@@ -12,21 +14,6 @@ conexao.once("open",()=>{
 const app = express();
 app.use(express.json());
 
-const livros = [
-    {
-        id: 1,
-        titulo:"Harry potter a pedra filosofal"
-    },
-    {
-        id: 2,
-        titulo:"Mente milionaria"
-    }
-]
-function buscaLivro(id){
-    return livros.findIndex(livro =>{
-        return livro.id === Number(id);
-    })
-}
 app.get("/",(req,res)=>{
     res.status(200).send("Api livraria Node.js");
 })
