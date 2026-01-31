@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 async function conectaDataBase(){
-    mongoose.connect("mongodb+srv://admin:admin12345@apilivraria.iqevchi.mongodb.net/ApiLivraria?appName=ApiLivraria");
+    mongoose.connect(process.env.DB_CONNECTION_STRING);
     return mongoose.connection;
 }
 export default conectaDataBase;
